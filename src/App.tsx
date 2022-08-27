@@ -1,8 +1,11 @@
+import FriendList from './components/FriendList';
+import Layout from './components/Layout';
+
 function App() {
   return (
-    <div className="App">
-      Split Squid
-    </div>
+    <Layout>
+      <FriendList />
+    </Layout>
   );
 }
 
