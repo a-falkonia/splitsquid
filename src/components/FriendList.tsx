@@ -3,8 +3,9 @@ import FriendCard from './FriendCard';
 import Card from './Card';
 import { useFriendsState } from '../hooks/useFriendsState';
 import Total from './Total';
+import { getUniqueId } from '../utils/utils';
 
-const initfriends: Friend[] = [{ id: 1, name: 'Stas', contribution: 100 }];
+const initfriends: Friend[] = [{ id: getUniqueId([]), name: 'Anna', contribution: 100 }];
 
 const FriendList = () => {
   const {
