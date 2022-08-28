@@ -32,7 +32,7 @@ const FriendCard = ({ friend, isOpen, onUpdate, onRemove, onClick }: Props) => {
 
   const handleClick = () => {
     onClick(friend.id);
-  }
+  };
 
   const nameRef = useRef<HTMLInputElement>(null);
   const amountRef = useRef<HTMLInputElement>(null);
@@ -50,7 +50,7 @@ const FriendCard = ({ friend, isOpen, onUpdate, onRemove, onClick }: Props) => {
 
   return (
     <li>
-      <Card hoverable={!isOpen} onClick={handleClick}>
+      <Card hoverable={!isOpen} onClick={isOpen ? undefined : handleClick}>
         {isOpen ? (
           <div className='flex flex-col items-stretch gap-3'>
             <div className='flex w-full items-center gap-3'>
