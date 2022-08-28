@@ -1,12 +1,31 @@
-import { useState } from "react";
-import { Friend } from "../utils/types";
-import { getUniqueId } from "../utils/utils";
+import { useEffect, useState } from "react";
+import { Expense, Friend } from "../utils/types";
+import { getContributionAverage, getContributionTotal, getSplitSteps, getTotal, getUniqueId } from "../utils/utils";
 
 
 // Custom hook implementation
 export const useFriendsState = (initialFriends: Friend[]) => {
     const [friends, setFriends] = useState<Friend[]>(initialFriends)
     const [friendCardOpen, setFriendCardOpen] = useState<number | null>()
+    const [expenses, setExpenses] = useState<Expense | null>(null)
+
+
+    useEffect(() => {
+
+        const contributionList = friends.map((m) => m.contribution);
+        if (friends.length > 1 && getTotal(contributionList) >= 1) {
+            const res = {
+                amount: getContributionTotal(friends),
+                average: getContributionAverage(friends),
+                steps: getSplitSteps(friends),
+            }
+            setExpenses(res)
+        }
+        else {
+            setExpenses(null)
+        }
+
+    }, [friends])
 
     const addFriend = () => {
         const idList = friends.map((m) => m.id);
@@ -43,6 +62,7 @@ export const useFriendsState = (initialFriends: Friend[]) => {
         toggleFriendCardOpen,
         addFriend,
         updateFriend,
-        removeFriend
+        removeFriend,
+        expenses
     }
 }
