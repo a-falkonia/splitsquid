@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/splitsquid/static/css/main.f71e5ed9.css",
+    "main.js": "/splitsquid/static/js/main.b7174fba.js",
+    "index.html": "/splitsquid/index.html",
+    "static/media/trash.svg": "/splitsquid/static/media/trash.f890df9fa83ef9fcafdb2e51d8dd198a.svg",
+    "static/media/arrow-right.svg": "/splitsquid/static/media/arrow-right.517b92ac02d5f3b5b84fc2918121699c.svg",
+    "static/media/check.svg": "/splitsquid/static/media/check.d106ed6d2f28569b0d150dcc05b90ab0.svg",
+    "main.f71e5ed9.css.map": "/splitsquid/static/css/main.f71e5ed9.css.map",
+    "main.b7174fba.js.map": "/splitsquid/static/js/main.b7174fba.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f71e5ed9.css",
+    "static/js/main.b7174fba.js"
+  ]
+}
