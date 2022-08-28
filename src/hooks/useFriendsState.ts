@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Friend } from "../utils/types";
 import { getUniqueId } from "../utils/utils";
 
-const removeFriend = (friends: Friend[], id: number) =>
-    friends.filter((person) => person.id !== id)
 
 // Custom hook implementation
 export const useFriendsState = (initialFriends: Friend[]) => {
@@ -29,6 +27,12 @@ export const useFriendsState = (initialFriends: Friend[]) => {
         toggleFriendCardOpen(id);
     }
 
+    const removeFriend = (id: number) => {
+        const newFriends = friends.filter((person) => person.id !== id)
+        setFriends(newFriends)
+        toggleFriendCardOpen(id)
+    }
+
     const toggleFriendCardOpen = (id: number) => {
         setFriendCardOpen(friendCardOpen === id ? null : id);
     };
@@ -39,6 +43,6 @@ export const useFriendsState = (initialFriends: Friend[]) => {
         toggleFriendCardOpen,
         addFriend,
         updateFriend,
-        removeFriend: (id: number) => { setFriends((fr) => removeFriend(fr, id)) },
+        removeFriend
     }
 }
