@@ -13,6 +13,7 @@ interface Props {
 
   onChange?: (value: string) => any;
 
+
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
@@ -26,6 +27,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           autoComplete='off'
           value={value}
           onChange={(e) => onChange && onChange(e.target.value)}
+         
           className={`
             h-full w-full
             px-3

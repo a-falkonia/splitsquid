@@ -16,6 +16,11 @@ export const getUniqueId = (idList: number[]) => {
     return availableIds[index];
 }
 
+export const getFormattedAmount = (amount: number) => {
+    const formatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+    return formatted
+    
+}
 function getRandomInt(min:number, max: number) {
     min = Math.ceil(min);
     max = Math.floor(max);

@@ -10,6 +10,7 @@ import InputAmount from './InputAmount';
 import Divider from './Divider';
 import Button from './Button';
 import { useRef, useState } from 'react';
+import { getFormattedAmount } from '../utils/utils';
 
 interface Props {
   friend: Friend;
@@ -83,7 +84,7 @@ const FriendCard = ({ friend, isOpen, onUpdate, onRemove, onClick }: Props) => {
         ) : (
           <div className='flex w-full items-center gap-3'>
             <FriendName friend={friend} />
-            <span className='text-xl font-light'>{friend.contribution}</span>
+            <span className='text-xl font-light'>{getFormattedAmount(friend.contribution)}</span>
           </div>
         )}
       </Card>
