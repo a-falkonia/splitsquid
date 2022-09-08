@@ -15,12 +15,20 @@ import { getFormattedAmount } from '../utils/utils';
 interface Props {
   friend: Friend;
   isOpen: boolean;
+  isOnly: boolean;
   onUpdate: (id: number, name: string, contribution: number) => void;
   onRemove: (id: number) => void;
   onClick: (id: number) => void;
 }
 
-const FriendCard = ({ friend, isOpen, onUpdate, onRemove, onClick }: Props) => {
+const FriendCard = ({
+  friend,
+  isOpen,
+  isOnly,
+  onUpdate,
+  onRemove,
+  onClick,
+}: Props) => {
   const handleRemove = () => {
     onRemove(friend.id);
   };
@@ -73,9 +81,11 @@ const FriendCard = ({ friend, isOpen, onUpdate, onRemove, onClick }: Props) => {
             </div>
             <Divider />
             <div className='flex w-full items-center gap-3'>
-              <Button onClick={handleRemove}>
-                <img src={trash} alt='trash' className='h-5 w-5' />
-              </Button>
+              {!isOnly && (
+                <Button onClick={handleRemove}>
+                  <img src={trash} alt='trash' className='h-5 w-5' />
+                </Button>
+              )}
               <Button onClick={handleUpdate}>
                 <img src={check} alt='check' className='h-5 w-5' />
               </Button>
@@ -84,7 +94,9 @@ const FriendCard = ({ friend, isOpen, onUpdate, onRemove, onClick }: Props) => {
         ) : (
           <div className='flex w-full items-center gap-3'>
             <FriendName friend={friend} />
-            <span className='text-xl font-light'>{getFormattedAmount(friend.contribution)}</span>
+            <span className='text-xl font-light'>
+              {getFormattedAmount(friend.contribution)}
+            </span>
           </div>
         )}
       </Card>

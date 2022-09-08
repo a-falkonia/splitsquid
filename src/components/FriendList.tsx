@@ -5,7 +5,9 @@ import { useFriendsState } from '../hooks/useFriendsState';
 import Total from './Total';
 import { getUniqueId } from '../utils/utils';
 
-const initfriends: Friend[] = [{ id: getUniqueId([]), name: 'Anna', contribution: 100 }];
+const initfriends: Friend[] = [
+  { id: getUniqueId([]), name: 'Anna', contribution: 100 },
+];
 
 const FriendList = () => {
   const {
@@ -15,7 +17,7 @@ const FriendList = () => {
     addFriend,
     updateFriend,
     removeFriend,
-    expenses
+    expenses,
   } = useFriendsState(initfriends);
 
   return (
@@ -27,6 +29,7 @@ const FriendList = () => {
               key={person.id}
               friend={person}
               isOpen={person.id === friendCardOpen}
+              isOnly={friends.length === 1}
               onUpdate={updateFriend}
               onRemove={removeFriend}
               onClick={toggleFriendCardOpen}
